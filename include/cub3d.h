@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/01/31 17:14:54 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/01/31 18:25:13 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,52 @@
 # include <stdio.h>
 # include <time.h>
 
-#define WALL '1'
-#define FLOOR '0'
-#define NORTH 'N'
-#define SOUTH 'S'
-#define WEST 'W'
-#define EAST 'E'
+# define WALL '1'
+# define FLOOR '0'
+# define NORTH 'N'
+# define SOUTH 'S'
+# define WEST 'W'
+# define EAST 'E'
 
+typedef struct s_map
+{
+	char	**tab;
+	int		raws;
+	int		columns;
+
+}	t_map;
+
+
+typedef struct s_parsing
+{
+	int	flag_n;
+	int	flag_s;
+	int	flag_e;
+	int	flag_w;
+	int	flag_c;
+	int	flag_f;
+	int	reading_map;
+
+}	t_parsing;
+
+
+typedef struct s_game
+{
+	t_parsing	parse;
+	char 		*reading;
+	t_map		map;
+}	t_game;
+
+
+typedef struct s_im
+{
+	t_game	cube;
+	t_game	legende;
+	t_game	game;
+}	t_im;
+
+
+void	check_file_map_parsing(t_game *game, int argc, char **argv);
 
 #endif
 
