@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/01/31 18:25:13 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/01/31 18:38:26 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <math.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <../Libft/libft.h>
+# include "../Libft/libft.h"
 # include <stdio.h>
 # include <time.h>
 

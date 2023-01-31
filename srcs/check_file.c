@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:21:01 by chajjar           #+#    #+#             */
-/*   Updated: 2023/01/31 18:25:30 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/01/31 18:55:39 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	check_file_map_parsing(t_game *game, int argc, char **argv)
 	game->parse.flag_w = 0;
 	game->parse.reading_map = 0;
 	game->map.raws = 0;
+	printf("parsing ok\n");
 }

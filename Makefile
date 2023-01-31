@@ -6,12 +6,12 @@
 #    By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 14:15:08 by chajjar           #+#    #+#              #
-#    Updated: 2023/01/31 17:04:01 by chajjar          ###   ########.fr        #
+#    Updated: 2023/01/31 18:40:07 by chajjar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
-SRC =	main.c  check_map.c
+SRC =	srcs/main.c  srcs/check_map.c srcs/check_file.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -22,12 +22,14 @@ all: $(NAME)
 
 dependency:
 	make -sC Libft
+	make -sC MLX42
 
 .c.o:
 	gcc $(FLAGS) -c $< -o ${<:.c=.o}
 
 $(NAME): dependency $(OBJ)
-	gcc $(DANGER) -o $(NAME) $(OBJ) -LLibft -lft MLX42/libmlx42.a
+	gcc $(DANGER) -o $(NAME) $(OBJ) -LLibft -lft -LMLX42 -lmlx42
+	
 clean: 
 	@rm -f $(OBJ)
 
