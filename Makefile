@@ -6,12 +6,12 @@
 #    By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 14:15:08 by chajjar           #+#    #+#              #
-#    Updated: 2023/01/31 14:38:06 by chajjar          ###   ########.fr        #
+#    Updated: 2023/01/31 17:04:01 by chajjar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
-SRC =	main.c  
+SRC =	main.c  check_map.c
 
 OBJ = $(SRC:.c=.o)
 
