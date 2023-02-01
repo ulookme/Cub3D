@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/01/31 18:38:26 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/01 18:26:26 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_map
 
 }	t_map;
 
-
 typedef struct s_parsing
 {
 	int	flag_n;
@@ -49,14 +48,12 @@ typedef struct s_parsing
 
 }	t_parsing;
 
-
 typedef struct s_game
 {
 	t_parsing	parse;
-	char 		*reading;
+	char		*reading;
 	t_map		map;
 }	t_game;
-
 
 typedef struct s_im
 {
@@ -65,8 +62,9 @@ typedef struct s_im
 	t_game	game;
 }	t_im;
 
-
 void	check_file_map_parsing(t_game *game, int argc, char **argv);
+void	parse_map_line(t_game *game);
+int		parse_map_line2(t_game *game);
+void	empty_map(t_game *game);
 
 #endif
-

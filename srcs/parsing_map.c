@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:19:04 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/01 17:37:17 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/01 18:24:46 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,18 @@ int	parse_map_line2(t_game *game)
 {
 	int	map_fd;
 
-	
+	map_fd = open(game->reading, O_RDONLY);
+	free(game->reading);
+	if (map_fd == -1)
+		printf("Error: la map n'as pas pue etre lu");
+	game->reading = get_next_line(map_fd);
+	return (map_fd);
 }
+
+void	empty_map(t_game *game)
+{
+	if (game->map.tab[0] == NULL)
+		printf("Error: map vide");
+}
+
+
