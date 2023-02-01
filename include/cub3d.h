@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/01 18:26:26 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/01 19:13:29 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include "../Libft/libft.h"
 # include <stdio.h>
 # include <time.h>
+
+# define DEFINITION_TEXTURE 600
+# define NB_TEXTURES 11
 
 # define WALL '1'
 # define FLOOR '0'
@@ -50,6 +53,19 @@ typedef struct s_parsing
 
 typedef struct s_game
 {
+	int			textsize;
+	void		*mlx_ptr;
+	void		*wind_ptr;
+	char		*name_text[NB_TEXTURES];
+	int			r_c;
+	int			g_c;
+	int			b_c;
+	int			r_f;
+	int			g_f;
+	int			b_f;
+	t_im		*ptr_textures;
+	t_im		img;
+	t_im		img_text[NB_TEXTURES];
 	t_parsing	parse;
 	char		*reading;
 	t_map		map;

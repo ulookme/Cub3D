@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:19:04 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/01 18:24:46 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/01 19:18:02 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,11 @@ void	empty_map(t_game *game)
 		printf("Error: map vide");
 }
 
-
+void	parsing_map(t_game *game, t_game *cube)
+{
+	int		map_fd;
+	char	*tmp;
+	char	*tmp2;
+	
+	
+}
