@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 19:01:40 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/02 15:21:04 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/02 15:41:36 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,9 @@ void	parse_text_color(char *path, t_game *cube, t_game *game)
 	else if (path[0] == 'F')
 		game->parse.flag_f += find_floor_color(path, cube);
 	else if (path[0] == 'C')
-		game->parse.flag_c += find_cell_color(path, cube);		
-	
+		game->parse.flag_c += find_cell_color(path, cube);
+	else if (parse_flag(game) && is_empty_line(path))
+		game->parse.reading_map = 1;
+	else if ((!is_empty_line(path)) && game->parse.reading_map == 0)
+		printf("Error: impossible d'ouvrire le map");
 }

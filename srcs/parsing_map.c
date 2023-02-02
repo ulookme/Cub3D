@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:19:04 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/01 19:18:02 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/02 15:44:34 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	parsing_map(t_game *game, t_game *cube)
 	int		map_fd;
 	char	*tmp;
 	char	*tmp2;
-	
+
+	map_fd = parse_map_line2(game);
+	tmp = ft_strdup("");
 	
 }
