@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 19:01:40 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/02 14:47:54 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/02 15:21:04 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,12 @@ void	parse_text_color(char *path, t_game *cube, t_game *game)
 	else if (path[0] == 'S' && path[1] == 'O')
 		game->parse.flag_s += find_texture(path, 1, cube);
 	else if (path[0] == 'E' && path[1] == 'A')
-		game->parse.flag_e += find_texture(path, 2, cube);
+		game->parse.flag_e += find_texture(path, 3, cube);
+	else if (path[0] == 'W' && path[1] == 'E')
+		game->parse.flag_w += find_texture(path, 2, cube);
+	else if (path[0] == 'F')
+		game->parse.flag_f += find_floor_color(path, cube);
+	else if (path[0] == 'C')
+		game->parse.flag_c += find_cell_color(path, cube);		
+	
 }
