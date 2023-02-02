@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:19:04 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/02 15:44:34 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/02 16:10:39 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,22 @@ void	parsing_map(t_game *game, t_game *cube)
 
 	map_fd = parse_map_line2(game);
 	tmp = ft_strdup("");
-	
+	while (game->reading)
+	{
+		if (game->parse.reading_map == 0)
+			parse_text_color(game->reading, cube, game);
+		if (game->parse.reading_map == 1)
+		{
+			if (is_empty_line(game->reading))
+				prinf("Error: le map contien une ligne vide");
+			tmp2 = tmp;
+			tmp = ft_strjoin(tmp2, game->reading);
+			free(tmp2);
+			game->map.raws += 1;
+		}
+		game->reading = get_next_line(map_fd);
+	}
+	close(map_fd);
+	game->map.tab = ft_split(tmp, '\n');
+	empty_map(game);
 }
