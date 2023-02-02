@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 19:01:40 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/02 14:20:21 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/02 14:47:54 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,3 +85,12 @@ int	find_floor_color(char *path, t_game *cube)
 	return (1);
 }
 
+void	parse_text_color(char *path, t_game *cube, t_game *game)
+{
+	if (path[0] == 'N' && path[1] == 'O')
+		game->parse.flag_n += find_texture(path, 0, cube);
+	else if (path[0] == 'S' && path[1] == 'O')
+		game->parse.flag_s += find_texture(path, 1, cube);
+	else if (path[0] == 'E' && path[1] == 'A')
+		game->parse.flag_e += find_texture(path, 2, cube);
+}
