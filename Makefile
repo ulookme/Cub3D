@@ -6,12 +6,14 @@
 #    By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 14:15:08 by chajjar           #+#    #+#              #
-#    Updated: 2023/02/01 19:17:57 by chajjar          ###   ########.fr        #
+#    Updated: 2023/02/02 14:13:10 by chajjar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
-SRC =	srcs/main.c  srcs/check_map.c srcs/check_file.c srcs/parsing_map.c srcs/parsin_text_color.c
+SRC =	srcs/main.c  srcs/check_map.c srcs/check_file.c \
+		srcs/parsing_map.c srcs/parsin_text_color.c \
+		srcs/check_color.c
 
 OBJ = $(SRC:.c=.o)
 
