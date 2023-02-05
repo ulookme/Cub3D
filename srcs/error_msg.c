@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 14:27:37 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 19:13:36 by chajjar          ###   ########.fr       */
+/*   Created: 2023/02/05 19:06:59 by chajjar           #+#    #+#             */
+/*   Updated: 2023/02/05 19:07:28 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../includes/cub3d.h"
 
-int	main(int argc, char **argv)
+void	error_msg(char *msg)
 {
-	t_im images;
-
-	srand(time(0));
-	if (check_file_map_parsing(&images.game, argc, argv))
-		return (1);
-	parsing_map(&images.game, &images.cube);
-	parse_map_line(&images.game);
+	ft_printf(RED"%s\n", msg);
+	exit (0);
 }

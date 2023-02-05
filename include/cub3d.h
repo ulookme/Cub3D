@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/02 16:10:54 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 19:07:38 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int		check_file_map_parsing(t_game *game, int argc, char **argv);
 void	parse_map_line(t_game *game);
 int		parse_map_line2(t_game *game);
 void	empty_map(t_game *game);
+void	error_msg(char *msg);
 int		check_color(int r, int g, int b);
 int		parse_flag(t_game *game);
 int		is_empty_line(char *line);

@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:19:04 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/02 16:10:39 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 19:12:22 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	parse_map_line(t_game *game)
 		if (game->map.columns < (int)ft_strlen(game->map.tab[i]))
 			game->map.columns = ft_strlen(game->map.tab[i]);
 	}
+	printf("je suis ok \n");
 }
 
 int	parse_map_line2(t_game *game)
