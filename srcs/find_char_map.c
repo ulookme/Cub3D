@@ -6,13 +6,25 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:36:39 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 19:36:44 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 20:14:08 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../include/cub3d.h"
 
-int	find_char(char p, char *caracters)
+int	index_last_raw(t_game *game)
+{
+	int	i;
+	int	size;
+
+	i = 0;
+	while (game->map.tab[i])
+		i++;
+	size = i;
+	return (size);
+}
+
+int	find_char_map(char p, char *caracters)
 {
 	int	i;
 

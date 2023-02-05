@@ -1,0 +1,17 @@
+NO ./images_xpm/text_NO.xpm
+
+SO ./images_xpm/text_SO.xpm
+WE ./images_xpm/text_WE.xpm
+
+EA ./images_xpm/text_EA.xpm
+
+
+F 255,0,0
+C 10,0,255
+
+11111111
+10000001
+11000011
+110E0011
+10000001
+11111111

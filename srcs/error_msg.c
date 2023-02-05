@@ -6,14 +6,14 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:06:59 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 19:07:28 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 20:59:22 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../include/cub3d.h"
 
 void	error_msg(char *msg)
 {
-	ft_printf(RED"%s\n", msg);
+	ft_printf("Error: %s\n", msg);
 	exit (0);
 }

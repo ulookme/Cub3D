@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:19:04 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 19:12:22 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 21:53:36 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	parse_map_line(t_game *game)
 		if (game->map.columns < (int)ft_strlen(game->map.tab[i]))
 			game->map.columns = ft_strlen(game->map.tab[i]);
 	}
-	printf("je suis ok \n");
 }
 
 int	parse_map_line2(t_game *game)
@@ -32,15 +31,17 @@ int	parse_map_line2(t_game *game)
 	map_fd = open(game->reading, O_RDONLY);
 	free(game->reading);
 	if (map_fd < 0)
-		printf("Error: la map n'as pas pue etre lu\n");
+		error_msg("la map n'as pas pue etre lu");
 	game->reading = get_next_line(map_fd);
 	return (map_fd);
 }
 
-void	empty_map(t_game *game)
+void	check_error(t_game *game)
 {
 	if (game->map.tab[0] == NULL)
-		printf("Error: map vide\n");
+		error_msg("map vide");
+	if (!find_start_pos(NULL, game))
+		error_msg("aucun point de depart");
 }
 
 void	parsing_map(t_game *game, t_game *cube)
@@ -57,10 +58,12 @@ void	parsing_map(t_game *game, t_game *cube)
 	{
 		if (game->parse.reading_map == 0)
 			parse_text_color(game->reading, cube, game);
-		else if (game->parse.reading_map == 1)
+		if (game->parse.reading_map == 1)
 		{
 			if (is_empty_line(game->reading))
-				printf("Error: le map contien une ligne vide\n");
+				error_msg("le map contien une ligne vide");
+			if (find_start_pos(game->reading, game) > 1)
+				error_msg("la map contient plusieurs point de depart");
 			tmp2 = tmp;
 			tmp = ft_strjoin(tmp2, game->reading);
 			free(tmp2);
@@ -68,7 +71,7 @@ void	parsing_map(t_game *game, t_game *cube)
 		}
 		if (parse_flag(game) < 0)
 		{
-			printf("Error: la carte contient une instruction duplique\n");
+			error_msg("la carte contient une instruction duplique");
 			close(map_fd);
 			game->map.tab = ft_split(tmp, '\n');
 			return;
@@ -77,5 +80,5 @@ void	parsing_map(t_game *game, t_game *cube)
 	}
 	close(map_fd);
 	game->map.tab = ft_split(tmp, '\n');
-	empty_map(game);
+	check_error(game);
 }

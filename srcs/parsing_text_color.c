@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 19:01:40 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/02 15:41:36 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 21:45:00 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	find_texture(char *path, int index, t_game *cube)
 	tmp = ft_split(path, ' ');
 	tmp[1][ft_strlen(tmp[1]) - 1] = '\0';
 	if (!tmp[1] || tmp[2])
-		printf("Error: impossible de charger la texture\n");
+		error_msg("impossible de charger la texture");
 	cube->name_text[index] = ft_strdup(tmp[1]);
 	while (tmp[++i])
 		free(tmp[i]);
@@ -38,15 +38,15 @@ int	find_cell_color(char *path, t_game *cube)
 	i = -1;
 	tmp1 = ft_split(path, ' ');
 	if (!tmp1[1] || tmp1[2])
-		printf("Error: impossible de charger la couleur du plafond\n");
+		error_msg("impossible de charger la couleur du plafond");
 	tmp2 = ft_split(path, ',');
 	if (!tmp2[2] || tmp2[3])
-		printf("Error: impossible de charger la couleur du plafond\n");
+		error_msg("impossible de charger la couleur du plafond");
 	cube->r_c = ft_atoi(tmp2[0]);
 	cube->b_c = ft_atoi(tmp2[1]);
 	cube->g_c = ft_atoi(tmp2[2]);
 	if (!check_color(cube->r_c, cube->g_c, cube->b_c))
-		printf("Error: chargement du plafond impossible\n");
+		error_msg("chargement du plafond impossible");
 	while (tmp1[++i])
 		free(tmp1[i]);
 	free(tmp1);
@@ -55,6 +55,35 @@ int	find_cell_color(char *path, t_game *cube)
 		free(tmp2[i]);
 	free(tmp2);
 	return (1);
+}
+
+int	find_start_pos(const char *str, t_game *cube)
+{
+	int			x;
+	static int	y = 0;
+	static int	spawns = 0;
+
+	x = 0;
+	while (str && str[x] && str[x] != '\n')
+	{
+		if (str[x] == 'E' || str[x] == 'N'
+			|| str[x] == 'S' || str[x] == 'W')
+		{
+			cube->player.x_pos = x;
+			cube->player.y_pos = y;
+			spawns++;
+		}
+		if (str[x] == 'E')
+			cube->player.rot = 0;
+		if (str[x] == 'N')
+			cube->player.rot = 90;
+		if (str[x] == 'W')
+			cube->player.rot = 180;
+		if (str[x++] == 'S')
+			cube->player.rot = 260;
+	}
+	y++;
+	return (spawns);
 }
 
 int	find_floor_color(char *path, t_game *cube)
@@ -66,15 +95,15 @@ int	find_floor_color(char *path, t_game *cube)
 	i = -1;
 	tmp1 = ft_split(path, ' ');
 	if (!tmp1[1] || tmp1[2])
-		printf("Error: impossible de charger la couleur du sol\n");
+		error_msg("impossible de charger la couleur du sol");
 	tmp2 = ft_split(path, ',');
 	if (!tmp2[2] || tmp2[3])
-		printf("Error: impossible de charger la couleur du sol\n");
+		error_msg("impossible de charger la couleur du sol");
 	cube->r_f = ft_atoi(tmp2[0]);
 	cube->b_f = ft_atoi(tmp2[1]);
 	cube->g_f = ft_atoi(tmp2[2]);
 	if (!check_color(cube->r_f, cube->g_f, cube->b_f))
-		printf("Error: chargement du sol impossible\n");
+		error_msg("chargement du sol impossible");
 	while (tmp1[++i])
 		free(tmp1[i]);
 	free(tmp1);
