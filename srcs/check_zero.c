@@ -6,15 +6,15 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:32:22 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 21:03:38 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 22:31:42 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int c_space(char c)
+int	c_space(char c)
 {
-    if (c == ' ' || c == '\t' || c == '\0')
+	if (c == ' ' || c == '\t' || c == '\0')
 		return (0);
 	return (1);
 }

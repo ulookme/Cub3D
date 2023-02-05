@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:37 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 21:32:00 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 22:30:30 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_im images;
+	t_im	images;
 
 	srand(time(0));
 	check_file_map_parsing(&images.game, argc, argv);

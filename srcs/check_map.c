@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:14:18 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 21:57:16 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 22:32:01 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,29 @@ void	check_file_map_parsing(t_game *game, int argc, char **argv)
 	game->map.raws = 0;
 }
 
+int	check_map_char(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	j = -1;
+	while (game->map.tab[++i])
+	{
+		while (game->map.tab[i][++j])
+		{
+			if (find_char_map(game->map.tab[i][j], " \t01NSEW") == 0)
+				return (0);
+		}
+		j = -1;
+	}
+	return (1);
+}
+
 void	fill_algorithm(int x, int y, char **region)
 {
-	int		i;
-
-	if (region && y >= 0 && region[y] && x >= 0 && region[y][x])
+	if (region && y >= 0 && region[y] && x >= 0
+		&& (size_t) x < ft_strlen(region[y]) && region[y][x])
 	{
 		if (region[y][x] != '0' && region[y][x] != 'N'
 			&& region[y][x] != 'S' && region[y][x] != 'E'
@@ -50,24 +68,16 @@ void	fill_algorithm(int x, int y, char **region)
 	}
 	else
 	{
-		i = 0;
 		printf("Out at: %d %d\n", x, y);
-		while (region && region[i])
-			printf("%s\n", region[i++]);
 		error_msg("la map n est pas entierement ferme");
 	}
 }
 
-int check_parametre_map(t_game *game)
+int	check_parametre_map(t_game *game)
 {
-	int		i;
-
-	i = 0;
-    if (check_map_char(game) == 0)
-        error_msg("caractere non definie dans le map");
-    fill_algorithm(game->player.x_pos, game->player.y_pos, game->map.tab);
-	while (game->map.tab && game->map.tab[i])
-		printf("%s\n", game->map.tab[i++]);
-    printf("Success: Map loaded!\n");
-    return (0);
+	if (check_map_char(game) == 0)
+		error_msg("caractere non definie dans le map");
+	fill_algorithm(game->player.x_pos, game->player.y_pos, game->map.tab);
+	printf("Success: Map loaded!\n");
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:09:14 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/02 15:33:23 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 22:31:20 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	check_color(int r, int g, int b)
 {
-	if (r < 0  || r > 255)
+	if (r < 0 || r > 255)
 		return (0);
-	if (g < 0  || g > 255)
+	if (g < 0 || g > 255)
 		return (0);
-	if (b < 0  || b > 255)
+	if (b < 0 || b > 255)
 		return (0);
 	return (1);
 }
