@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_parameter_map.c                              :+:      :+:    :+:   */
+/*   find_char_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 19:14:18 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 19:30:46 by chajjar          ###   ########.fr       */
+/*   Created: 2023/02/05 19:36:39 by chajjar           #+#    #+#             */
+/*   Updated: 2023/02/05 19:36:44 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../includes/cub3d.h"
 
-int check_parametre_map(t_game *game)
+int	find_char(char p, char *caracters)
 {
-    if ()
+	int	i;
 
-    return (0);
+	i = 0;
+	while (caracters[i] != '\0')
+	{
+		if (p == caracters[i])
+			return (1);
+	i++;
+	}
+	return (0);
 }

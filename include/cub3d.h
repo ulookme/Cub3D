@@ -6,7 +6,7 @@
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 19:07:38 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/05 19:37:43 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,7 @@ int		find_cell_color(char *path, t_game *cube);
 int		find_floor_color(char *path, t_game *cube);
 void	parse_text_color(char *path, t_game *cube, t_game *game);
 void	parsing_map(t_game *game, t_game *cube);
+int		find_char_map(char p, char *caracters);
+int		check_map_char(t_game *game);
+
 #endif

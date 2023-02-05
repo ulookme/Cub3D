@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_parameter_map.c                              :+:      :+:    :+:   */
+/*   check_map_charac.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 19:14:18 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 19:30:46 by chajjar          ###   ########.fr       */
+/*   Created: 2023/02/05 19:31:28 by chajjar           #+#    #+#             */
+/*   Updated: 2023/02/05 19:36:58 by chajjar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int check_parametre_map(t_game *game)
+int	check_map_char(t_game *game)
 {
-    if ()
+	int	i;
+	int	j;
 
-    return (0);
+	i = -1;
+	j = -1;
+	while (game->map.tab[++i])
+	{
+		while (game->map.tab[i][++j])
+		{
+			if (find_char_map(game->map.tab[i][j], " \t01NSEW") == 0)
+				return (0);
+		}
+		j = -1;
+	}
+	return (1);
 }
