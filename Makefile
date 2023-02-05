@@ -12,7 +12,7 @@
 
 NAME = cub3D
 SRC =	srcs/main.c  srcs/check_map.c srcs/check_file.c \
-		srcs/parsing_map.c srcs/parsin_text_color.c \
+		srcs/parsing_map.c srcs/parsing_text_color.c \
 		srcs/check_color.c
 
 OBJ = $(SRC:.c=.o)

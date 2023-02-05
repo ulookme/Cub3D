@@ -63,9 +63,6 @@ typedef struct s_game
 	int			r_f;
 	int			g_f;
 	int			b_f;
-	t_im		*ptr_textures;
-	t_im		img;
-	t_im		img_text[NB_TEXTURES];
 	t_parsing	parse;
 	char		*reading;
 	t_map		map;
@@ -78,7 +75,7 @@ typedef struct s_im
 	t_game	game;
 }	t_im;
 
-void	check_file_map_parsing(t_game *game, int argc, char **argv);
+int		check_file_map_parsing(t_game *game, int argc, char **argv);
 void	parse_map_line(t_game *game);
 int		parse_map_line2(t_game *game);
 void	empty_map(t_game *game);

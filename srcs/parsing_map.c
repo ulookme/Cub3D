@@ -30,8 +30,8 @@ int	parse_map_line2(t_game *game)
 
 	map_fd = open(game->reading, O_RDONLY);
 	free(game->reading);
-	if (map_fd == -1)
-		printf("Error: la map n'as pas pue etre lu");
+	if (map_fd < 0)
+		printf("Error: la map n'as pas pue etre lu\n");
 	game->reading = get_next_line(map_fd);
 	return (map_fd);
 }
@@ -39,7 +39,7 @@ int	parse_map_line2(t_game *game)
 void	empty_map(t_game *game)
 {
 	if (game->map.tab[0] == NULL)
-		printf("Error: map vide");
+		printf("Error: map vide\n");
 }
 
 void	parsing_map(t_game *game, t_game *cube)
@@ -49,19 +49,28 @@ void	parsing_map(t_game *game, t_game *cube)
 	char	*tmp2;
 
 	map_fd = parse_map_line2(game);
+	if (!game->reading)
+		return ;
 	tmp = ft_strdup("");
 	while (game->reading)
 	{
 		if (game->parse.reading_map == 0)
 			parse_text_color(game->reading, cube, game);
-		if (game->parse.reading_map == 1)
+		else if (game->parse.reading_map == 1)
 		{
 			if (is_empty_line(game->reading))
-				prinf("Error: le map contien une ligne vide");
+				printf("Error: le map contien une ligne vide\n");
 			tmp2 = tmp;
 			tmp = ft_strjoin(tmp2, game->reading);
 			free(tmp2);
 			game->map.raws += 1;
+		}
+		if (parse_flag(game) < 0)
+		{
+			printf("Error: la carte contient une instruction duplique\n");
+			close(map_fd);
+			game->map.tab = ft_split(tmp, '\n');
+			return;
 		}
 		game->reading = get_next_line(map_fd);
 	}

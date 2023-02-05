@@ -29,6 +29,10 @@ int	parse_flag(t_game *game)
 		|| game->parse.flag_w == 0 || game->parse.flag_e == 0 \
 		|| game->parse.flag_c == 0 || game->parse.flag_f == 0)
 		return (0);
+	if (game->parse.flag_n > 1 || game->parse.flag_s > 1 \
+		|| game->parse.flag_w > 1 || game->parse.flag_e > 1 \
+		|| game->parse.flag_c > 1 || game->parse.flag_f > 1)
+		return (-1);
 	return (1);
 }
 

@@ -19,10 +19,10 @@ int	find_texture(char *path, int index, t_game *cube)
 
 	i = -1;
 	tmp = ft_split(path, ' ');
-	tmp[1][ft_strlen(tmp[1]) - 1] = "\0";
+	tmp[1][ft_strlen(tmp[1]) - 1] = '\0';
 	if (!tmp[1] || tmp[2])
-		printf("Error: impossible de charger la texture");
-	cube->name_text[index] = ft_strlen(tmp[1]);
+		printf("Error: impossible de charger la texture\n");
+	cube->name_text[index] = ft_strdup(tmp[1]);
 	while (tmp[++i])
 		free(tmp[i]);
 	free(tmp);
@@ -38,15 +38,15 @@ int	find_cell_color(char *path, t_game *cube)
 	i = -1;
 	tmp1 = ft_split(path, ' ');
 	if (!tmp1[1] || tmp1[2])
-		printf("Error: impossible de charger la couleur du plafond");
+		printf("Error: impossible de charger la couleur du plafond\n");
 	tmp2 = ft_split(path, ',');
 	if (!tmp2[2] || tmp2[3])
-		printf("Error: impossible de charger la couleur du plafond");
+		printf("Error: impossible de charger la couleur du plafond\n");
 	cube->r_c = ft_atoi(tmp2[0]);
 	cube->b_c = ft_atoi(tmp2[1]);
 	cube->g_c = ft_atoi(tmp2[2]);
 	if (!check_color(cube->r_c, cube->g_c, cube->b_c))
-		printf("Error: chargement du plafond impossible");
+		printf("Error: chargement du plafond impossible\n");
 	while (tmp1[++i])
 		free(tmp1[i]);
 	free(tmp1);
@@ -66,15 +66,15 @@ int	find_floor_color(char *path, t_game *cube)
 	i = -1;
 	tmp1 = ft_split(path, ' ');
 	if (!tmp1[1] || tmp1[2])
-		printf("Error: impossible de charger la couleur du sol");
+		printf("Error: impossible de charger la couleur du sol\n");
 	tmp2 = ft_split(path, ',');
 	if (!tmp2[2] || tmp2[3])
-		printf("Error: impossible de charger la couleur du sol");
+		printf("Error: impossible de charger la couleur du sol\n");
 	cube->r_f = ft_atoi(tmp2[0]);
 	cube->b_f = ft_atoi(tmp2[1]);
 	cube->g_f = ft_atoi(tmp2[2]);
 	if (!check_color(cube->r_f, cube->g_f, cube->b_f))
-		printf("Error: chargement du sol impossible");
+		printf("Error: chargement du sol impossible\n");
 	while (tmp1[++i])
 		free(tmp1[i]);
 	free(tmp1);
@@ -99,8 +99,6 @@ void	parse_text_color(char *path, t_game *cube, t_game *game)
 		game->parse.flag_f += find_floor_color(path, cube);
 	else if (path[0] == 'C')
 		game->parse.flag_c += find_cell_color(path, cube);
-	else if (parse_flag(game) && is_empty_line(path))
+	else if (parse_flag(game) && !is_empty_line(path))
 		game->parse.reading_map = 1;
-	else if ((!is_empty_line(path)) && game->parse.reading_map == 0)
-		printf("Error: impossible d'ouvrire le map");
 }

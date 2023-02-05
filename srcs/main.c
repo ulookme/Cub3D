@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	t_im images;
 
 	srand(time(0));
-	check_file_map_parsing(&images.game, argc, argv);
+	if (check_file_map_parsing(&images.game, argc, argv))
+		return (1);
 	parsing_map(&images.game, &images.cube);
 }
