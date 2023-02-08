@@ -6,13 +6,13 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:24:15 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/08 10:45:06 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/08 12:38:00 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int find_player(char *p, char *caracters)
+int find_player(char p, char *caracters)
 {
     int i;
 

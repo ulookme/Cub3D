@@ -6,7 +6,7 @@
 #    By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 14:15:08 by chajjar           #+#    #+#              #
-#    Updated: 2023/02/08 10:05:40 by charleshajj      ###   ########.fr        #
+#    Updated: 2023/02/08 12:23:28 by charleshajj      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRC =	srcs/main.c srcs/check_map.c \
 		srcs/parsing_map.c srcs/parsing_text_color.c \
 		srcs/check_color.c srcs/find_char_map.c \
 		srcs/error_msg.c srcs/check_zero.c srcs/init_player.c \
-		
+		srcs/check_nb_player_map.c srcs/init_player_position.c
 
 OBJ = $(SRC:.c=.o)
 

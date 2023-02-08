@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/08 10:45:16 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/08 12:37:49 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,9 @@ int		check_zero(t_game *game);
 int		check_parametre_map(t_game *game);
 void    init_pos_player(t_game *game);
 void	init_player(t_game *game);
-int		find_player(char *p, char *caracters);
+int		find_player(char p, char *caracters);
 void    init_player_position(t_game *game,char *line, int y);
+int		count_char(char *str, char c);
+void	check_nb_player_map(t_game *game);
 
 #endif

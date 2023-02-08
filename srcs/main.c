@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:37 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/08 10:02:00 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/08 12:17:07 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	main(int argc, char **argv)
 	parse_map_line(&images.game);
 	check_parametre_map(&images.game);
 	init_player(&images.game);
+	check_nb_player_map(&images.game);
 	
 }
