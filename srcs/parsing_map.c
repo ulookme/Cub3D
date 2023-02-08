@@ -36,7 +36,7 @@ int	parse_map_line2(t_game *game)
 	return (map_fd);
 }
 
-static void	check_error(t_game *game)
+void	check_error(t_game *game)
 {
 	if (game->map.tab[0] == NULL)
 		error_msg("map vide");

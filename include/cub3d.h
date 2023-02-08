@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 22:13:41 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/08 10:01:18 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdio.h>
 # include <time.h>
 
-# define DEFINITION_TEXTURE 600
+# define DEFINITION_TEXTURES 600
 # define NB_TEXTURES 11
 
 # define WALL '1'
@@ -32,10 +32,13 @@
 # define EAST 'E'
 
 # define FILL_CHAR '-'
+# define ANGLE_OF_VIE M_PI/4
 
 
 typedef struct s_player
 {
+	double		speed;
+	double		apos;
 	double		x_pos;
 	double		y_pos;
 	double		rot;
@@ -43,9 +46,13 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	char	**tab;
-	int		raws;
-	int		columns;
+	char		**tab;
+	int			raws;
+	int			columns;
+	int			nb_player;
+	int			move;
+	int			hit_wall;
+	t_player	p;
 
 }	t_map;
 
