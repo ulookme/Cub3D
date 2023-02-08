@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 09:07:52 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/08 10:01:04 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/08 10:13:48 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void    init_pos_player(t_game *game)
                 game->map.p.apos = 0;
         }
     }
-
 }
 
 void    init_player(t_game *game)
@@ -43,5 +42,5 @@ void    init_player(t_game *game)
     game->map.p.rot = 0.1;
     game->map.hit_wall = 0;
     game->rapport_player = DEFINITION_TEXTURES;
-    init_player(game);
+    init_pos_player(game);
 }
