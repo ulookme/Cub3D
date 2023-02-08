@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_text_color.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 19:01:40 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 22:31:22 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/08 15:57:16 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int	find_start_pos(const char *str, t_game *cube)
 		if (str[x++] == 'S')
 			cube->player.rot = 260;
 	}
-	y++;
+	if (str)
+		y++;
 	return (spawns);
 }
 

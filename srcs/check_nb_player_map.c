@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:54:50 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/08 12:21:32 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/08 16:06:16 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ void    check_nb_player_map(t_game *game)
             init_player_position(game, game->map.tab[i], i);
         i++;
     }
-    if (game->map.nb_player != 1)
+    game->map.nb_player = find_start_pos(NULL, game);
+    printf("nb playeur = %i\n", game->map.nb_player);
+    if (game->map.nb_player == 1)
+        printf("un joueur actif");
+        
+    else 
         error_msg("zero ou plusieur joueur initaliser");
 }
