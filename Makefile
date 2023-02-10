@@ -6,7 +6,7 @@
 #    By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 14:15:08 by chajjar           #+#    #+#              #
-#    Updated: 2023/02/09 21:13:06 by charleshajj      ###   ########.fr        #
+#    Updated: 2023/02/10 17:21:46 by charleshajj      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRC_FILES =	main check_map \
 		check_color find_char_map \
 		error_msg check_zero init_player \
 		check_nb_player_map init_player_position \
-		init_gameplay print_map
+		init_gameplay print_map draw_player color_funct draw_sqard \
+		img_pixel_put
 
 SRC = $(foreach f, $(SRC_FILES), $(SRC_FOLDER)/$(f).c)
 OBJ = $(SRC:.c=.o)
@@ -29,14 +30,12 @@ all: $(NAME)
 
 dependency:
 	make -sC Libft
-	make -sC MLX42
 	make -sC mlx
 
 .c.o:
 	gcc $(FLAGS) -c $< -o ${<:.c=.o}
 
 $(NAME): dependency $(OBJ)
-	gcc $(DANGER) -o $(NAME) $(OBJ) -LLibft -lft -LMLX42 -lmlx42 -lglfw 
 	gcc $(DANGER) -o $(NAME) $(OBJ) -LLibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 	
 clean: 

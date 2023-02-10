@@ -6,50 +6,64 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:44:42 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/09 20:50:47 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/10 17:06:42 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static void	show_square(uint32_t x, uint32_t y, mlx_image_t *i)
+int	test_size_map2(t_game *game)
 {
-	uint32_t	dx;
-	uint32_t	dy;
-	uint8_t		*b;
-
-	dy = y * 10;
-	while (dy < y * 10 + 10 && dy < i->height)
+	if (game->wind_ptr == NULL)
+		return (1);
+	if (game->textsize == 0)
 	{
-		dx = x * 10;
-		while (dx < x * 10 + 10 && dx < i->width)
-		{
-			b = &i->pixels[(dx++ + dy * i->width) * 4];
-			*b++ = 0xFF;
-			*b++ = 0xFF;
-			*b++ = 0xFF;
-			*b = 0xFF;
-		}
-		dy++;
+		mlx_put_image_to_window(game->mlx_ptr, game->wind_ptr, \
+			game->img.mlx_img, 0, CUBE_Y);
+		mlx_string_put(game->mlx_ptr, game->wind_ptr, 100, CUBE_Y + 100, \
+			encode_rgb(0, 255, 0), "*** TOO LARGE *** ");
+		return (0);
 	}
+	return (0);
 }
 
-void	print_map(t_game *g)
+static void	ft_put_wall_player(t_game *game, int x, int y)
 {
-	int		x;
-	int		y;
+	int	wi;
+	int	he;
 
-	y = 0;
-	while (g->map.tab && g->map.tab[y])
+	if (game->map.tab[x][y] >= WALL && game->map.tab[x][y] <= '9'
+		&& (game->textsize))
 	{
-		x = 0;
-		while (g->map.tab[y][x])
-		{
-			if (g->map.tab[y][x] == '1')
-				show_square(x, y, g->img.mlx_img);
-			x++;
-		}
-		y++;
+		game->img.mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, \
+			"./image_XPM/wall.xpm", &wi, &he);
+		mlx_put_image_to_window(game->mlx_ptr, game->wind_ptr, \
+			game->img.mlx_img, y * 10, x * 10 + CUBE_Y);
 	}
-	mlx_image_to_window(g->mlx_ptr, g->img.mlx_img, 0, 0);
+	if (find_player(game->map.tab[x][y], "NSEW") == 1)
+	{
+		if (game->textsize)
+			draw_player_p(game, x, y);
+		game->map.tab[(int)floor(game->map.p.y_pos / \
+			game->rapport_player)][(int)floor(game->map.p.x_pos / \
+				game->rapport_player)] = FLOOR;
+	}	
 }
+
+int	print_map(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	if (test_size_map2(game))
+		return (1);
+	while (++x < game->map.raws)
+	{
+		y = -1;
+		while (game->map.tab[x][++y])
+			ft_put_wall_player(game, x, y);
+	}
+	return (0);
+}
+

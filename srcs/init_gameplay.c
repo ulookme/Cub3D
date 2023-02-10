@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 00:48:32 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/09 19:15:55 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/10 17:05:44 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,34 @@ void	ft_test_size_map(t_game *game)
 		game->textsize = 1;
 		game->img.mlx_img = mlx_new_image(game->mlx_ptr, (game->map.columns * \
 			10), (game->map.raws * 10));
-		game->img.addr = game->img.mlx_img->pixels;
+		game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp, \
+			&game->img.raw_len, &game->img.endian);
 	}
 	else
 	{
 		game->textsize = 0;
 		game->img.mlx_img = mlx_new_image(game->mlx_ptr, IMAGE_X - \
 			LEGENDE_X, IMAGE_Y - CUBE_Y);
-		game->img.addr = game->img.mlx_img->pixels;
+		game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp, \
+			&game->img.raw_len, &game->img.endian);
 	}
 }
 
 void	init_game(t_game *game)
 {
-	int	x = 1600;
-	int	y = 800;
+	int	x;
+	int	y;
 
-	game->mlx_ptr = mlx_init(x, y, "Cub3D", 1);
+	game->mlx_ptr = mlx_init();
 	if (game->mlx_ptr == NULL)
 		error_msg("pointeur mlx introuvable");
 	x = IMAGE_X;
 	y = IMAGE_Y;
-	game->wind_ptr = game->mlx_ptr->window;
+	game->wind_ptr = mlx_new_window(game->mlx_ptr, x, y, "Cub3D");
+	if (game->wind_ptr == NULL)
+	{
+		free(game->wind_ptr);
+		error_msg("fenetre introuvable");
+	}
 	ft_test_size_map(game);
 }

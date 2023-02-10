@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_char_map.c                                    :+:      :+:    :+:   */
+/*   draw_sqard.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 19:36:39 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/10 16:51:40 by charleshajj      ###   ########.fr       */
+/*   Created: 2023/02/10 16:36:49 by charleshajj       #+#    #+#             */
+/*   Updated: 2023/02/10 16:38:48 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	index_last_raw(t_game *game)
+void	draw_square(t_game *game, int posx, int posy, int color)
 {
 	int	i;
-	int	size;
+	int	j;
 
-	i = 0;
-	while (game->map.tab[i])
-		i++;
-	size = i;
-	return (size);
-}
-
-int	find_char_map(char p, char *caracters)
-{
-	int	i;
-
-	i = 0;
-	while (caracters[i] != '\0')
+	i = -1;
+	j = -1;
+	if (game->wind_ptr == NULL)
+		return ;
+	while (++i < 10)
 	{
-		if (p == caracters[i])
-			return (1);
-	i++;
+		while (++j < 10)
+			img_pix_put(game, posy + i, posx + j, color);
+		j = -1;
 	}
-	return (0);
 }

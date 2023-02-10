@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:37 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/09 19:23:32 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/10 16:56:30 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main(int argc, char **argv)
 	init_player(&images.game);
 	check_nb_player_map(&images.game);
 	init_game(&images.game);
-
 	print_map(&images.game);
-	mlx_loop(images.game.mlx_ptr);
+
 }

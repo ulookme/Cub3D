@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/09 21:14:06 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/10 17:20:22 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include "../Libft/libft.h"
 # include <stdio.h>
 # include <time.h>
-//# include "../MLX42/include/MLX42/MLX42.h"
 # include "../mlx/mlx.h"
 
 # define DEFINITION_TEXTURES 600
@@ -40,6 +39,15 @@
 # define WEST 'W'
 # define EAST 'E'
 
+# define SKY_COLOR 0x000000FF
+# define WALL_COLOR 0x006C767C
+# define FLOOR_COLOR 0x008FB5D1
+# define PLAYER_COLOR 0x001093D9
+# define NORTH_COLOR 0x00FF0000
+# define SOUTH_COLOR 0x0000FF00
+# define EAST_COLOR 0x000000FF
+# define WEST_COLOR 0x00FFFF00
+
 # define FILL_CHAR '-'
 # define ANGLE_OF_VIE M_PI/4
 
@@ -53,9 +61,9 @@ typedef struct s_img
 {
 	void			*ref;
 	t_vector_int	size;
-	mlx_image_t		*mlx_img;
-	uint8_t			*addr;
+	char			*addr;
 	int				bpp;
+	void			*mlx_img;
 	int				raw_len;
 	int				endian;
 }	t_img;
@@ -96,7 +104,7 @@ typedef struct s_parsing
 typedef struct s_game
 {
 	int			textsize;
-	mlx_t		*mlx_ptr;
+	void		*mlx_ptr;
 	void		*wind_ptr;
 	char		*name_text[NB_TEXTURES];
 	int			r_c;
@@ -149,8 +157,15 @@ int		find_player(char p, char *caracters);
 void    init_player_position(t_game *game,char *line, int y);
 int		count_char(char *str, char c);
 void	check_nb_player_map(t_game *game);
-void    ft_test_size_map(t_game *game);
+void	ft_test_size_map(t_game *game);
 void	init_game(t_game *game);
-void	print_map(t_game *g);
+int		test_size_map2(t_game *game);
+int		encode_rgb(uint8_t red, uint8_t green, uint8_t blue);
+void	img_pix_put(t_game *game, int x, int y, int color);
+void	draw_player(t_game *game, int posx, int posy, int color);
+void	draw_square(t_game *game, int posx, int posy, int color);
+void	draw_player_p(t_game *game, int x, int y);
+int		reprint_pos(t_game *game);
+int		print_map(t_game *game);
 
 #endif

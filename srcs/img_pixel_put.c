@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_char_map.c                                    :+:      :+:    :+:   */
+/*   img_pixel_put.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 19:36:39 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/10 16:51:40 by charleshajj      ###   ########.fr       */
+/*   Created: 2023/02/10 17:19:31 by charleshajj       #+#    #+#             */
+/*   Updated: 2023/02/10 17:20:02 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	index_last_raw(t_game *game)
+void	img_pix_put(t_game *game, int x, int y, int color)
 {
-	int	i;
-	int	size;
+	char	*pixel;
+	int		i;
 
-	i = 0;
-	while (game->map.tab[i])
-		i++;
-	size = i;
-	return (size);
-}
-
-int	find_char_map(char p, char *caracters)
-{
-	int	i;
-
-	i = 0;
-	while (caracters[i] != '\0')
+	i = game->img.bpp - 8;
+	pixel = game->img.addr + (y * game->img.raw_len + x * \
+		(game->img.bpp / 8));
+	while (i >= 0)
 	{
-		if (p == caracters[i])
-			return (1);
-	i++;
+		if (game->img.endian != 0)
+			*pixel++ = (color >> i) & 0xFF;
+		else
+			*pixel++ = (color >> (game->img.bpp - 8 - i)) & 0xFF;
+				i -= 8;
 	}
-	return (0);
 }
