@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/10 17:20:22 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/11 23:25:06 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,5 +167,9 @@ void	draw_square(t_game *game, int posx, int posy, int color);
 void	draw_player_p(t_game *game, int x, int y);
 int		reprint_pos(t_game *game);
 int		print_map(t_game *game);
+void	init_legend(t_game *game, t_game *legende);
+
+int		event_close(void *param);
+int		event_key(t_game *game);
 
 #endif

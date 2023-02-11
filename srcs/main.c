@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:37 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/11 21:52:24 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/11 23:25:44 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int	main(int argc, char **argv)
 	check_nb_player_map(&images.game);
 	init_game(&images.game);
 	print_map(&images.game);
-	init_legend(&images.game, &images.legend);
-	
+	init_legend(&images.game, &images.legende);
+	mlx_hook(images.game.wind_ptr, 17, 1L << 17, event_close, \
+		"Application closed\n");
+	mlx_key_hook(images.game.wind_ptr, event_key, &images.game);
+	mlx_loop(images.game.mlx_ptr);
 }
