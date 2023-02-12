@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/11 23:25:06 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/12 22:03:55 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,22 @@
 # include <stdio.h>
 # include <time.h>
 # include "../mlx/mlx.h"
+
+
+#  define TOUCH_A 0
+#  define TOUCH_W 13
+#  define TOUCH_S 1
+#  define TOUCH_D 2
+#  define TOUCH_RIGHT 124
+#  define TOUCH_LEFT 123
+#  define TOUCH_UP 126
+#  define TOUCH_DOWN 125
+#  define TOUCH_ESC 53
+#  define DEGREE_X1 120
+#  define DEGREE_Y1 258
+#  define DEGREE_X2 146
+#  define DEGREE_Y2 291
+
 
 # define DEFINITION_TEXTURES 600
 # define NB_TEXTURES 11
@@ -89,6 +105,37 @@ typedef struct s_map
 
 }	t_map;
 
+typedef struct s_ray
+{
+	double	posx;
+	double	posy;
+	double	dir_x;
+	double	dir_y;
+	double	planex;
+	double	planey;
+	double	dirx;
+	double	diry;
+	double	camerax;
+	double	raydirx;
+	double	raydiry;
+	double	mapx;
+	double	mapy;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+	double	perpwalldist;
+	double	stepx;
+	double	stepy;
+	int		hit;
+	int		side;
+	int		index;
+	int		lineheight;
+	int		drawstart;
+	int		drawend;
+	int		x;
+}	t_ray;
+
 typedef struct s_parsing
 {
 	int	flag_n;
@@ -120,8 +167,12 @@ typedef struct s_game
 	t_parsing	parse;
 	char		*reading;
 	t_map		map;
+	t_ray		r;
 	double		*apos_game;
 	int			rapport_player;
+	char		*sprite[NB_ANIME][2];
+	int			nb_sprite;
+	int			dir_sprite;
 }	t_game;
 
 typedef struct s_im
@@ -171,5 +222,22 @@ void	init_legend(t_game *game, t_game *legende);
 
 int		event_close(void *param);
 int		event_key(t_game *game);
+void	ft_init_var_3d_1(t_game *cube, int x);
+void	calc_dist(t_im *images, t_game *cube, char *texture_hit);
+void	ft_choice_texture(t_im *images, t_game *cube, char *texture_hit);
+void	ft_clear_logo_direction(t_im *images, t_game *cube);
+int		ft_calc_texture(double x_map, int i, t_im *images, int face);
+int		anim_cub3d(t_im *images);
+void	update(t_im *image, int key);
+void	move_player(t_game *game, double nb, double alpha);
+void	anim_direction(t_game *legende, int key);
+int		input_2(t_im *images);
+int		input(int key, t_im *images);
+void	init_legend(t_game *game, t_game *legend);
+void	draw_circle_bis(t_game *image, int r, int color);
+void	draw_circle(t_game *image, int r, int color);
+int		anim_legend(t_game *legend);
+int		ft_close(t_im *image);
+void	init_cube(t_game *game, t_game *cube);
 
 #endif
