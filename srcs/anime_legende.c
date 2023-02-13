@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 19:49:16 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/12 21:33:02 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/13 04:41:01 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	init_legend(t_game *game, t_game *legend)
 {
-	//int	wi;
-	//int	he;
+	int	wi;
+	int	he;
 
 	legend->mlx_ptr = game->mlx_ptr;
 	legend->wind_ptr = game->wind_ptr;
@@ -26,8 +26,10 @@ void	init_legend(t_game *game, t_game *legend)
 	legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, LEGENDE_X, LEGENDE_Y);
 	legend->img.addr = mlx_get_data_addr(legend->img.mlx_img, &legend->img.bpp \
 		, &legend->img.raw_len, &legend->img.endian);
-	mlx_string_put(legend->mlx_ptr, legend->wind_ptr, \
-		0, 0, 0xFFFFFF00,"Bienvenue dans le LaB");
+	legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, \
+		"./image_XPM/Cube3D_2b.xpm", &wi, &he);
+	mlx_put_image_to_window(legend->mlx_ptr, legend->wind_ptr, \
+		legend->img.mlx_img, CUBE_X, 0);
 }
 
 void	draw_circle_bis(t_game *image, int r, int color)

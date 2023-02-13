@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:37 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/12 22:01:17 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/13 13:52:01 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,14 @@ int	main(int argc, char **argv)
 	print_map(&images->game);
 	init_legend(&images->game, &images->legende);
 	init_cube(&images->game, &images->cube);
-	mlx_hook(images->game.wind_ptr, 17, 1L << 17, event_close, \
-		"Application closed\n");
-	mlx_key_hook(images->game.wind_ptr, input, &images);
+	//ft_init_text(&images->cube);
+	mlx_string_put(images->cube.mlx_ptr, images->cube.wind_ptr, 250, \
+		340, 0x00FF00, "       GO");
+	mlx_mouse_move(images->game.wind_ptr, (CUBE_X / 2), (CUBE_Y -100));
+	mlx_hook(images->game.wind_ptr, 2, 1L << 0, *input, &images);
+	mlx_hook(images->game.wind_ptr, 17, 1L << 17, ft_close, &images);
+	mlx_hook(images->game.wind_ptr, 6, 1, *move_test, &images);
+	mlx_mouse_hook(images->game.wind_ptr, *movements_mouse, &images);
 	mlx_loop(images->game.mlx_ptr);
 	free(images);
 }

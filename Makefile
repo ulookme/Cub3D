@@ -6,7 +6,7 @@
 #    By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 14:15:08 by chajjar           #+#    #+#              #
-#    Updated: 2023/02/12 22:04:25 by charleshajj      ###   ########.fr        #
+#    Updated: 2023/02/13 04:14:41 by charleshajj      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC_FILES =	main check_map \
 		init_gameplay print_map draw_player color_funct draw_sqard \
 		img_pixel_put  events calcul_texture cub_3d_box \
 		cub_3d_box2 cub_3d_box3 anime_dir input movement_player ft_close \
-		anime_legende init_cube
+		anime_legende init_cube move_tst mouve_mss init_texture
 
 SRC = $(foreach f, $(SRC_FILES), $(SRC_FOLDER)/$(f).c)
 OBJ = $(SRC:.c=.o)

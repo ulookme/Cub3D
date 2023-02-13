@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 18:13:39 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/12 19:00:35 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/13 04:52:48 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ void	ft_clear_logo_direction(t_im *images, t_game *cube)
 {
 	int		wi;
 	int		he;
-	t_game	*legend;
+	t_game	*legende;
 
 	mlx_put_image_to_window(cube->mlx_ptr, cube->wind_ptr, \
 		cube->img.mlx_img, 0, 0);
-	legend = &images->legende;
-	mlx_destroy_image(legend->mlx_ptr, legend->img.mlx_img);
-	legend->img.mlx_img = mlx_new_image(legend->mlx_ptr, 162, 159);
-	legend->img.mlx_img = mlx_xpm_file_to_image(legend->mlx_ptr, \
-		"./image_XPM/fleche_bleu.xpm", &wi, &he);
-	mlx_put_image_to_window(legend->mlx_ptr, legend->wind_ptr, \
-	legend->img.mlx_img, CUBE_X + 64, 403);
+	legende = &images->legende;
+	mlx_destroy_image(legende->mlx_ptr, legende->img.mlx_img);
+	legende->img.mlx_img = mlx_new_image(legende->mlx_ptr, 162, 159);
+	legende->img.mlx_img = mlx_xpm_file_to_image(legende->mlx_ptr, \
+		"./image_XPM/wall.xpm", &wi, &he);
+	mlx_put_image_to_window(legende->mlx_ptr, legende->wind_ptr, \
+	legende->img.mlx_img, CUBE_X + 64, 403);
 }

@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:27:48 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/12 22:03:55 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/13 04:13:27 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,5 +239,7 @@ void	draw_circle(t_game *image, int r, int color);
 int		anim_legend(t_game *legend);
 int		ft_close(t_im *image);
 void	init_cube(t_game *game, t_game *cube);
-
+void	ft_init_text(t_game *cube);
+int		move_test(int x, int y, t_im *images);
+int		movements_mouse(int button, int x, int y, t_im *images);
 #endif
