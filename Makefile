@@ -6,7 +6,7 @@
 #    By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 14:15:08 by chajjar           #+#    #+#              #
-#    Updated: 2023/02/13 04:14:41 by charleshajj      ###   ########.fr        #
+#    Updated: 2023/02/14 05:21:45 by charleshajj      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,20 @@ NAME = cub3D
 SRC_FOLDER = srcs
 SRC_FILES =	main check_map \
 		parsing_map parsing_text_color \
-		check_color find_char_map \
-		error_msg check_zero init_player \
-		check_nb_player_map init_player_position \
-		init_gameplay print_map draw_player color_funct draw_sqard \
-		img_pixel_put  events calcul_texture cub_3d_box \
-		cub_3d_box2 cub_3d_box3 anime_dir input movement_player ft_close \
-		anime_legende init_cube move_tst mouve_mss init_texture
+		find_char init_player find_player\
+		error_msg check_zero  check_nb_player_map\
+		check_border parse_utils init_gameplay\
+		color_funct print_map  draw_player movement_player\
+		img_pixel_put draw_sqard anime_legende\
+		init_cube init_texture input ft_close\
+		mouve_mss anime_dir cub_3d_box3 cub_3d_box\
+		cub_3d_box2\
+		
 
 SRC = $(foreach f, $(SRC_FILES), $(SRC_FOLDER)/$(f).c)
 OBJ = $(SRC:.c=.o)
 
 FLAGS = -Wall -Werror -Wextra -g3
-DANGER = -fsanitize=address
 
 all: $(NAME)
 

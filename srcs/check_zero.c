@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_zero.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:32:22 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 22:31:42 by chajjar          ###   ########.fr       */
+/*   Updated: 2023/02/14 03:04:16 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	c_space(char c)
 	return (1);
 }
 
-int	check_zero(t_game *game)
+int	check_zeros(t_game *game)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (++i < game->map.raws - 1)
+	while (++i < game->map.lines - 1)
 	{
 		while (++j < (int)(ft_strlen(game->map.tab[i]) - 1))
 		{

@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   find_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 23:12:07 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/11 23:26:04 by charleshajj      ###   ########.fr       */
+/*   Created: 2023/02/13 16:54:13 by charleshajj       #+#    #+#             */
+/*   Updated: 2023/02/14 03:37:48 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	event_close(void *param)
+int	find_player(char p, char *caracters)
 {
-	write(1, param, ft_strlen(param));
-	exit(0);
-}
+	int	i;
 
-int	event_key(t_game *game)
-{
-	(void) game;
+	i = 0;
+	while (caracters[i] != '\0')
+	{
+		if (p == caracters[i])
+			return (1);
+	i++;
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:36:49 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/10 16:38:48 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/14 04:12:05 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_square(t_game *game, int posx, int posy, int color)
 
 	i = -1;
 	j = -1;
-	if (game->wind_ptr == NULL)
+	if (game->win_ptr == NULL)
 		return ;
 	while (++i < 10)
 	{

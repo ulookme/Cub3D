@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_color.c                                      :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chajjar <chajjar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 14:09:14 by chajjar           #+#    #+#             */
-/*   Updated: 2023/02/05 22:31:20 by chajjar          ###   ########.fr       */
+/*   Created: 2023/02/13 16:05:35 by charleshajj       #+#    #+#             */
+/*   Updated: 2023/02/14 03:19:59 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-int	check_color(int r, int g, int b)
-{
-	if (r < 0 || r > 255)
-		return (0);
-	if (g < 0 || g > 255)
-		return (0);
-	if (b < 0 || b > 255)
-		return (0);
-	return (1);
-}
 
 int	parse_flag(t_game *game)
 {
@@ -29,14 +18,10 @@ int	parse_flag(t_game *game)
 		|| game->parse.flag_w == 0 || game->parse.flag_e == 0 \
 		|| game->parse.flag_c == 0 || game->parse.flag_f == 0)
 		return (0);
-	if (game->parse.flag_n > 1 || game->parse.flag_s > 1 \
-		|| game->parse.flag_w > 1 || game->parse.flag_e > 1 \
-		|| game->parse.flag_c > 1 || game->parse.flag_f > 1)
-		return (-1);
 	return (1);
 }
 
-int	is_empty_line(char *line)
+int	empty_line(char *line)
 {
 	int	i;
 
@@ -48,5 +33,16 @@ int	is_empty_line(char *line)
 		else
 			return (0);
 	}
+	return (1);
+}
+
+int	check_color(int r, int g, int b)
+{
+	if (r < 0 || r > 255)
+		return (0);
+	if (g < 0 || g > 255)
+		return (0);
+	if (b < 0 || b > 255)
+		return (0);
 	return (1);
 }

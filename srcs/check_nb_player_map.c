@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:54:50 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/10 16:03:34 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/14 03:52:21 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,22 @@ int count_char(char *str, char c)
     return (count);
 }
 
-void    check_nb_player_map(t_game *game)
+void	check_nb_player(t_game *game)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < game->map.raws)
-    {
-        game->map.nb_player += count_char(game->map.tab[i], 'N');
-        game->map.nb_player += count_char(game->map.tab[i], 'E');
-        game->map.nb_player += count_char(game->map.tab[i], 'S');
-        game->map.nb_player += count_char(game->map.tab[i], 'W');
-        if (game->map.nb_player == 1)
-            init_player_position(game, game->map.tab[i], i);
-        i++;
-    }
-    game->map.nb_player = find_start_pos(NULL, game);
-    printf("nb playeur = %i\n", game->map.nb_player);
-    if (game->map.nb_player == 1)
-        printf("un joueur actif\n");
-        
-    else 
-        error_msg("zero ou plusieur joueur initaliser");
+	i = 0;
+	while (i < game->map.lines)
+	{
+		game->map.nb_player += count_char(game->map.tab[i], 'N');
+		game->map.nb_player += count_char(game->map.tab[i], 'E');
+		game->map.nb_player += count_char(game->map.tab[i], 'S');
+		game->map.nb_player += count_char(game->map.tab[i], 'W');
+		if (game->map.nb_player == 1)
+			init_player_position(game, game->map.tab[i], i);
+		i++;
+	}
+	if (game->map.nb_player != 1)
+		error_msg("Error:\n, aucun ou plus de 1 joueur!");
+	printf("le nombre de joueur est de 1\n");
 }

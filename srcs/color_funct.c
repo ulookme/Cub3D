@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:12:36 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/10 16:51:04 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/14 04:14:19 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	ft_destroy_and_init(t_game *game, int *orientation, int *int_color)
 	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
 	game->img.mlx_img = mlx_new_image(game->mlx_ptr, 10, 10);
 	game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp,
-			&game->img.raw_len, &game->img.endian);
+			&game->img.line_len, &game->img.endian);
 	*orientation = (int)(game->map.p.apos * 1000000) % (3141592 * 2);
 	if (*orientation < 0)
 		*orientation = (3141592 * 2) + *orientation;
@@ -76,12 +76,12 @@ int	reprint_pos(t_game *game)
 	int	int_color;
 	int	orientation;
 
-	if (game->textsize == 0)
+	if (game->test_size == 0)
 		return (0);
 	ft_destroy_and_init(game, &orientation, &int_color);
 	draw_player(game, 0, 0, int_color);
-	mlx_put_image_to_window(game->mlx_ptr, game->wind_ptr, game->img.mlx_img, \
-		game->map.p.x_pos * 10 / game->rapport_player, game->map.p.y_pos * \
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, \
+		game->map.p.pos.x * 10 / game->rapport_player, game->map.p.pos.y * \
 		10 / game->rapport_player + CUBE_Y);
 	return (0);
 }

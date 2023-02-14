@@ -6,7 +6,7 @@
 /*   By: charleshajjar <charleshajjar@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:19:31 by charleshajj       #+#    #+#             */
-/*   Updated: 2023/02/10 17:20:02 by charleshajj      ###   ########.fr       */
+/*   Updated: 2023/02/14 04:09:24 by charleshajj      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	img_pix_put(t_game *game, int x, int y, int color)
 	int		i;
 
 	i = game->img.bpp - 8;
-	pixel = game->img.addr + (y * game->img.raw_len + x * \
+	pixel = game->img.addr + (y * game->img.line_len + x * \
 		(game->img.bpp / 8));
 	while (i >= 0)
 	{
